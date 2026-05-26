@@ -1,17 +1,10 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-*.egg-info/
-dist/
-build/
-*.egg
+# Dependencies
+node_modules/
+frontend/node_modules/
 
-# Virtual environment
-venv/
-.venv/
-env/
+# Build output
+frontend/dist/
+dist/
 
 # IDE
 .vscode/
@@ -23,14 +16,15 @@ env/
 .DS_Store
 Thumbs.db
 
-# Project specific
-jarvis/data/face_data/*.jpg
-jarvis/data/face_data/*.png
-jarvis/data/face_data/*.npy
-jarvis/data/config.json
+# Database / runtime data
+database/
 *.log
 
 # Secrets
 .env
 *.key
 credentials.json
+
+# Electron
+out/
+release/

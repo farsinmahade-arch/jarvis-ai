@@ -1,247 +1,157 @@
-# 🤖 J.A.R.V.I.S - AI-Powered Personal Assistant
+# JARVIS — AI-Powered Desktop Assistant
 
 > *Just A Rather Very Intelligent System*
 
-An advanced AI-powered personal assistant inspired by Tony Stark's JARVIS. Features voice recognition, text-to-speech, face lock authentication, password protection, and a sleek terminal UI.
+A futuristic AI desktop assistant inspired by Tony Stark's JARVIS. Built with Electron, React, and Node.js.
 
-```
-       ___   ___  ______  _   __  ___  _____
-      / / | / _ \/ __/ / | | / / /  _|/ ___/
- __  / /| |/ , _/\ \/ /  | |/ / _/ / _\ \
-/___/_/ |_/_/|_/___/___/  |___/ /___//___/
-```
+![Dark Blue UI](https://img.shields.io/badge/UI-Dark_Blue_Futuristic-0ea5e9?style=flat-square)
+![Electron](https://img.shields.io/badge/Electron-React-47848f?style=flat-square)
+![AI Powered](https://img.shields.io/badge/AI-GPT--4.1-blueviolet?style=flat-square)
 
 ---
 
-## ✨ Features
+## Features
 
-### 🧠 AI Brain
-- **OpenAI GPT Integration** — Full conversational AI with GPT-4/3.5
-- **Conversation Memory** — Remembers context across your session
-- **Smart Fallback** — Rule-based responses when offline (jokes, wiki, system info)
-
-### 🎤 Hearing Module (Voice Recognition)
-- **Multi-engine support** — Google Speech, CMU Sphinx
-- **Wake word detection** — Say "Jarvis" to activate
-- **Auto-calibration** — Adapts to ambient noise
-- **Voice & text modes** — Switch seamlessly between input methods
-
-### 🔊 Voice Engine (Text-to-Speech)
-- **Natural speech output** via pyttsx3
-- **Adjustable speed & volume** — Real-time control
-- **Multiple voice options** — Male/female voices
-
-### 🔒 Password Protection
-- **Secure hashing** with SHA-256 + random salt
-- **Brute-force protection** — Auto-lockout after failed attempts
-- **First-time setup wizard** — Guided password creation
-- **Password change** — Secure in-session password updates
-
-### 👤 Face Lock
-- **Biometric authentication** using face_recognition + OpenCV
-- **Multi-sample enrollment** — 5-sample averaging for accuracy
-- **Real-time verification** — Camera-based face scanning
-- **Visual UI** — Live camera feed with status overlay
-
-### 🌅 Wake-up Call System
-- **Time-aware greetings** — Different messages for morning/afternoon/evening/night
-- **System status report** — CPU, RAM, battery on boot
-- **Motivational messages** — Randomized greetings to start your day
-
-### 🎨 Themed Terminal UI
-- **Iron Man inspired** — Cyan/gold color scheme
-- **ASCII art boot screen** — Animated JARVIS logo
-- **Module loading animation** — Visual system boot sequence
-- **Rich formatting** — Tables, panels, colored output
-- **Typing effects** — Simulated typing for immersion
+- **AI Chat** — Powered by OpenAI GPT-4.1 (or OpenRouter) with JARVIS personality
+- **Password Protection** — Secure login with hashed passwords and brute-force lockout
+- **Quick Shortcuts** — 30+ shortcuts to open websites instantly (`o yt`, `o g`, `o gh`...)
+- **App Launcher** — Open local apps with commands (`app code`, `app chrome`...)
+- **SearchAPI Integration** — Search the web from the chat
+- **System Monitor** — Real-time CPU, RAM, and battery status
+- **Local Memory** — Remembers conversation history and preferences
+- **Futuristic UI** — Dark blue theme with cyan accents, arc reactor animation, particle effects, waveform visualizer
 
 ---
 
-## 🚀 Quick Start
+## Tech Stack
 
-### Prerequisites
-- Python 3.9+
-- A microphone (for voice features)
-- A webcam (for face lock)
-- PortAudio (for PyAudio)
+| Layer | Tech |
+|-------|------|
+| Frontend | React + Vite + Tailwind CSS v4 + Framer Motion |
+| Backend | Node.js + Express |
+| Desktop | Electron |
+| AI | OpenAI API / OpenRouter |
+| Search | SearchAPI |
+| Database | Local JSON |
 
-### Installation
+---
+
+## Quick Start
+
+### 1. Clone & Install
 
 ```bash
-# Clone the repository
 git clone https://github.com/farsinmahade-arch/jarvis-ai.git
 cd jarvis-ai
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or: venv\Scripts\activate  # Windows
+# Install root dependencies
+npm install
 
-# Install system dependencies (Linux)
-sudo apt-get install -y portaudio19-dev python3-dev cmake
-
-# Install Python dependencies
-pip install -r requirements.txt
-
-# (Optional) Set OpenAI API key for full AI features
-export OPENAI_API_KEY="your-api-key-here"
-
-# Launch JARVIS
-python -m jarvis.main
+# Install frontend dependencies
+cd frontend && npm install && cd ..
 ```
 
-### macOS
+### 2. Configure
+
 ```bash
-brew install portaudio cmake
-pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your API keys
 ```
 
-### Windows
+### 3. Run (Web Mode)
+
 ```bash
-pip install pipwin
-pipwin install pyaudio
-pip install -r requirements.txt
+npm run dev
+```
+
+Open **http://localhost:5173** in your browser.
+
+### 4. Run (Electron Desktop Mode)
+
+```bash
+npm run electron:dev
 ```
 
 ---
 
-## 🎮 Usage
+## Project Structure
 
-### Text Mode (Default)
 ```
-► You: hello
-◉ JARVIS: Hello Sir. How may I assist you today?
-
-► You: tell me about quantum computing
-◉ JARVIS: [AI-powered response about quantum computing]
-
-► You: what's the system status
-◉ JARVIS: CPU Usage: 12% | RAM: 45% used (8GB / 16GB) | Battery: 87% (Charging)
+jarvis/
+├── electron/          # Electron main process
+│   ├── main.js
+│   └── preload.js
+├── frontend/          # React + Vite + Tailwind
+│   └── src/
+│       ├── components/
+│       │   ├── ArcReactor.jsx
+│       │   ├── ParticleBackground.jsx
+│       │   ├── ShortcutsPanel.jsx
+│       │   ├── SystemStatus.jsx
+│       │   └── WaveformVisualizer.jsx
+│       ├── pages/
+│       │   ├── LoginPage.jsx
+│       │   └── Dashboard.jsx
+│       └── App.jsx
+├── backend/           # Node.js + Express
+│   ├── server.js
+│   ├── auth.js
+│   ├── ai/chat.js
+│   ├── memory/
+│   ├── commands/
+│   └── search/
+├── database/          # Local JSON storage (auto-created)
+└── package.json
 ```
 
-### Voice Mode
-```
-► You: voice mode
-✓ Voice mode activated. I'm listening.
-◎ LISTENING... (speak now)
-► You: what time is it
-◉ JARVIS: The current time is 02:30 PM, Sir.
-```
+---
 
-### Commands
+## Commands
+
+Type these in the JARVIS chat:
+
 | Command | Description |
 |---------|-------------|
 | `help` | Show all commands |
-| `voice mode` | Switch to voice input |
-| `text mode` | Switch to text input |
-| `wake up` | Get wake-up call with date/time |
-| `time` / `date` | Current time or date |
-| `system` / `status` | System information |
-| `joke` | Tell a joke |
-| `open <website>` | Open a website |
-| `search <query>` | Wikipedia search |
-| `volume up/down` | Adjust speech volume |
-| `speed up/down` | Adjust speech speed |
-| `voices` | List available voices |
-| `voice <id>` | Change voice |
-| `settings` | Show settings |
-| `change password` | Change login password |
-| `clear memory` | Clear AI conversation history |
-| `exit` / `quit` | Shut down JARVIS |
+| `o yt` | Open YouTube |
+| `o g` | Open Google |
+| `o gh` | Open GitHub |
+| `o gpt` | Open ChatGPT |
+| `shortcuts` | List all 30+ shortcuts |
+| `app code` | Launch VS Code |
+| `app chrome` | Launch Chrome |
+| `apps` | List all app shortcuts |
+| `time` | Current time |
+| `date` | Current date |
+| `clear memory` | Reset conversation history |
+
+Or just type anything to chat with the AI.
 
 ---
 
-## 🔐 Security Setup
+## Environment Variables
 
-### First Launch
-1. JARVIS prompts you to create a password
-2. Optionally enroll your face for Face Lock
-3. On subsequent launches, authenticate with password + face
-
-### Face Lock
-- Enrollment captures 5 face samples for accuracy
-- Verification uses 0.5 tolerance for reliable matching
-- Face data stored locally in `jarvis/data/face_data/`
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `OPENAI_API_KEY` | OpenAI API key for AI chat | For AI features |
+| `OPENAI_BASE_URL` | Custom API endpoint (OpenRouter, etc.) | No |
+| `AI_MODEL` | AI model to use (default: `gpt-4.1-mini`) | No |
+| `SEARCHAPI_KEY` | SearchAPI key for web search | For search |
+| `PORT` | Backend port (default: `3001`) | No |
 
 ---
 
-## ⚙️ Configuration
+## Future Roadmap
 
-Settings are stored in `jarvis/data/config.json`:
-
-```json
-{
-  "assistant_name": "JARVIS",
-  "owner_name": "Sir",
-  "wake_word": "jarvis",
-  "voice_speed": 175,
-  "voice_volume": 1.0,
-  "theme_color": "cyan",
-  "ai_provider": "openai",
-  "ai_model": "gpt-4",
-  "security": {
-    "password_enabled": true,
-    "face_lock_enabled": true,
-    "max_login_attempts": 3,
-    "lockout_duration_seconds": 300
-  }
-}
-```
+- [ ] Voice Input (Whisper / Deepgram STT)
+- [ ] Voice Output (ElevenLabs / Piper TTS)
+- [ ] Wake Word Detection ("Hey Jarvis" via Porcupine)
+- [ ] Vision System (webcam, screenshot analysis)
+- [ ] Smart Home Integration (IoT devices)
+- [ ] Autonomous Actions (browse web, manage files)
 
 ---
 
-## 📁 Project Structure
+## License
 
-```
-jarvis-ai/
-├── jarvis/
-│   ├── __init__.py
-│   ├── main.py              # Entry point & main loop
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── config.py         # Configuration management
-│   │   └── brain.py          # AI brain (OpenAI + fallback)
-│   ├── modules/
-│   │   ├── __init__.py
-│   │   ├── hearing.py        # Voice recognition
-│   │   ├── voice.py          # Text-to-speech
-│   │   ├── greeting.py       # Wake-up call system
-│   │   └── commands.py       # Command processor
-│   ├── security/
-│   │   ├── __init__.py
-│   │   ├── password.py       # Password protection
-│   │   └── face_lock.py      # Face lock authentication
-│   ├── ui/
-│   │   ├── __init__.py
-│   │   └── theme.py          # Terminal UI theme
-│   └── data/
-│       └── face_data/        # Face enrollment data
-├── requirements.txt
-├── setup.py
-├── .gitignore
-└── README.md
-```
-
----
-
-## 🛠️ Tech Stack
-
-| Component | Technology |
-|-----------|-----------|
-| AI Engine | OpenAI GPT-4 / GPT-3.5 |
-| Voice Recognition | SpeechRecognition + PyAudio |
-| Text-to-Speech | pyttsx3 |
-| Face Recognition | face_recognition + OpenCV |
-| Password Security | SHA-256 + random salt |
-| Terminal UI | Rich + pyfiglet |
-| System Monitor | psutil |
-
----
-
-## 📄 License
-
-MIT License - feel free to use, modify, and distribute.
-
----
-
-*"I am JARVIS. I am here to assist you."*
+MIT
