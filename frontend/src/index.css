@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-jarvis-dark: #06111f;
+  --color-jarvis-darker: #030a12;
+  --color-jarvis-panel: #0a1929;
+  --color-jarvis-border: #1a3a5c;
+  --color-jarvis-cyan: #22d3ee;
+  --color-jarvis-cyan-dim: #0e7490;
+  --color-jarvis-gold: #f59e0b;
+  --color-jarvis-blue: #3b82f6;
+  --color-jarvis-red: #ef4444;
+  --color-jarvis-green: #22c55e;
+  --font-orbitron: 'Orbitron', monospace;
+  --font-rajdhani: 'Rajdhani', sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: var(--font-rajdhani);
+    background: var(--color-jarvis-dark);
+    color: #e2e8f0;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-jarvis-darker);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-jarvis-cyan-dim);
+    border-radius: 3px;
+  }
+}
+
+/* Arc Reactor animation */
+@keyframes reactor-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reactor-pulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
+  50% { opacity: 1; box-shadow: 0 0 40px rgba(34, 211, 238, 0.6); }
+}
+
+@keyframes float-particle {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+@keyframes glow-border {
+  0%, 100% { border-color: rgba(34, 211, 238, 0.2); }
+  50% { border-color: rgba(34, 211, 238, 0.5); }
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+  30% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scan-line {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
