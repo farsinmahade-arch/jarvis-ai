@@ -1,8 +1,8 @@
-# 🤖 J.A.R.V.I.S - AI-Powered Personal Assistant
+# 🤖 J.A.R.V.I.S - AI-Powered Desktop Assistant
 
 > *Just A Rather Very Intelligent System*
 
-An advanced AI-powered personal assistant inspired by Tony Stark's JARVIS. Features voice recognition, text-to-speech, face lock authentication, password protection, and a sleek terminal UI.
+An advanced AI-powered desktop assistant inspired by Tony Stark's JARVIS. Features a futuristic dark blue UI, voice conversation, AI chat with OpenAI, web search, local memory, PC automation, and wake word detection — all in a sleek Electron desktop app.
 
 ```
        ___   ___  ______  _   __  ___  _____
@@ -13,7 +13,116 @@ An advanced AI-powered personal assistant inspired by Tony Stark's JARVIS. Featu
 
 ---
 
-## ✨ Features
+## 🖥️ Desktop App (Electron + React)
+
+The desktop app provides a modern, futuristic UI built with Electron, React, Tailwind CSS, and Framer Motion.
+
+### Quick Start (Desktop App)
+
+```bash
+# Clone the repository
+git clone https://github.com/farsinmahade-arch/jarvis-ai.git
+cd jarvis-ai
+
+# Install root dependencies (Electron, backend)
+npm install
+
+# Install frontend dependencies
+cd frontend && npm install && cd ..
+
+# Set up environment
+cp .env.example .env
+# Edit .env and add your OpenAI API key
+
+# Start development (frontend + backend + Electron)
+npm run dev
+```
+
+### Architecture
+
+```
+Voice → Speech-To-Text → JARVIS Brain → SearchAPI / Commands / Memory → Text-To-Speech → User
+```
+
+### Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Desktop | Electron |
+| Frontend | React + Vite |
+| Styling | Tailwind CSS + Framer Motion |
+| Backend | Node.js + Express |
+| AI | OpenAI GPT-4.1 |
+| Voice | Browser SpeechRecognition / Deepgram + Browser TTS / ElevenLabs |
+| Search | SearchAPI |
+| Database | Local JSON |
+
+### Project Structure
+
+```
+jarvis-ai/
+├── electron/           # Electron main process
+│   ├── main.js
+│   └── preload.js
+├── frontend/           # React + Vite frontend
+│   ├── src/
+│   │   ├── components/ # UI components (TitleBar, Sidebar, Chat, etc.)
+│   │   ├── pages/      # Page views (Chat, Status, Memory, Commands, Settings)
+│   │   ├── animations/ # Particle effects, waveforms
+│   │   └── App.jsx
+│   └── public/
+├── backend/            # Node.js API server
+│   ├── ai/             # OpenAI chat integration
+│   ├── memory/         # Local memory/history system
+│   ├── voice/          # TTS & STT modules
+│   ├── commands/       # Desktop automation
+│   ├── search/         # SearchAPI integration
+│   └── server.js
+├── database/           # Local JSON storage
+├── jarvis/             # Original Python CLI version
+├── package.json
+└── .env.example
+```
+
+---
+
+## ✨ Features (Desktop App)
+
+### 💬 AI Chat
+- **OpenAI GPT Integration** — Conversational AI with GPT-4.1
+- **Conversation Memory** — Remembers context across sessions
+- **Markdown Support** — Rich formatted responses with code highlighting
+
+### 🎤 Voice System
+- **Speech-to-Text** — Browser native or Deepgram API
+- **Text-to-Speech** — Browser native or ElevenLabs API
+- **Voice Mode Toggle** — Switch between text and voice input
+- **Waveform Visualizer** — Real-time audio visualization
+
+### 🔍 Web Search
+- **SearchAPI Integration** — Search the web from chat
+- **Context-Aware** — AI incorporates search results into responses
+
+### 🧠 Memory System
+- **User Profile** — Stores name, preferences
+- **Facts Database** — Remember arbitrary facts
+- **Chat History** — Persistent conversation history
+
+### 🖥️ Desktop Automation
+- **Open Applications** — Browser, file manager, terminal
+- **System Controls** — Volume, lock screen
+- **Cross-Platform** — Windows, macOS, Linux support
+
+### 🎨 Futuristic UI
+- **Dark Blue Theme** — Inspired by Iron Man's JARVIS
+- **Animated Boot Screen** — System initialization sequence
+- **Particle Effects** — Floating connected particles background
+- **Radar Display** — Animated radar with sweep and blips
+- **Glowing Elements** — Cyan glow effects throughout
+
+---
+
+## ✨ Features (Original Python CLI)
 
 ### 🧠 AI Brain
 - **OpenAI GPT Integration** — Full conversational AI with GPT-4/3.5

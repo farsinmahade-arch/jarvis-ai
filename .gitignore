@@ -34,3 +34,16 @@ jarvis/data/config.json
 .env
 *.key
 credentials.json
+
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Database (local)
+database/memory.json
+database/settings.json
+
+# Electron
+out/
+release/
