@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+jarvis/data/face_data/*.jpg
+jarvis/data/face_data/*.png
+jarvis/data/face_data/*.npy
+jarvis/data/config.json
+*.log
+
+# Secrets
+.env
+*.key
+credentials.json
+
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Database (local)
+database/memory.json
+database/settings.json
+
+# Electron
+out/
+release/

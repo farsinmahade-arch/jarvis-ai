@@ -1,0 +1,34 @@
+{
+  "name": "jarvis-desktop",
+  "version": "1.0.0",
+  "description": "JARVIS - AI-Powered Desktop Assistant",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"wait-on http://localhost:5173 && npm run dev:electron\"",
+    "dev:frontend": "cd frontend && npx vite --host",
+    "dev:electron": "electron .",
+    "build:frontend": "cd frontend && npx vite build",
+    "build": "npm run build:frontend && electron-builder",
+    "start:backend": "node backend/server.js",
+    "lint": "cd frontend && npx eslint src/",
+    "typecheck": "echo 'No typecheck configured (JSX project)'"
+  },
+  "keywords": ["jarvis", "ai", "assistant", "electron", "desktop"],
+  "author": "Farsin",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.73.0",
+    "axios": "^1.7.0",
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "better-sqlite3": "^11.6.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.0",
+    "concurrently": "^9.1.0",
+    "wait-on": "^8.0.0"
+  }
+}

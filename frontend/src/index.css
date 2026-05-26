@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #06111f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a3a5c;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #22d3ee;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-jarvis-panel/80 backdrop-blur-md border border-jarvis-border/50 rounded-xl;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.2), inset 0 0 15px rgba(34, 211, 238, 0.05);
+  }
+
+  .hex-grid {
+    background-image:
+      linear-gradient(30deg, #1a3a5c12 12%, transparent 12.5%, transparent 87%, #1a3a5c12 87.5%, #1a3a5c12),
+      linear-gradient(150deg, #1a3a5c12 12%, transparent 12.5%, transparent 87%, #1a3a5c12 87.5%, #1a3a5c12),
+      linear-gradient(30deg, #1a3a5c12 12%, transparent 12.5%, transparent 87%, #1a3a5c12 87.5%, #1a3a5c12),
+      linear-gradient(150deg, #1a3a5c12 12%, transparent 12.5%, transparent 87%, #1a3a5c12 87.5%, #1a3a5c12),
+      linear-gradient(60deg, #1a3a5c22 25%, transparent 25.5%, transparent 75%, #1a3a5c22 75%, #1a3a5c22),
+      linear-gradient(60deg, #1a3a5c22 25%, transparent 25.5%, transparent 75%, #1a3a5c22 75%, #1a3a5c22);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
